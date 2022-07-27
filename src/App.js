@@ -13,8 +13,8 @@ function App() {
   const [Amount, setAmount] = useState(0);
   const [Amount_Ap, setAmount_Ap] = useState();
 
-  const contractAddress = '0xE8b8846d5b4EF628AdD535AeBE86772A54B28d3a'
-  const contractABI = require('./contract/abi.json')
+  const contractAddress = '0xB3818B57364a1cA2B3f6E2D1dd0DBE9CaA6C08bF' // your nft contract address  here 
+  const contractABI = require('./contract/abi.json') // nft contract abi 
   const AVALANCHE_TESTNET_PARAMS = {
     chainId: '0xA869',
     chainName: 'Avalanche Testnet C-Chain',
@@ -80,7 +80,7 @@ function App() {
 
   const SmartContract = async () => {
     const provider = new ethers.providers.JsonRpcProvider(
-      'https://api.avax-test.network/ext/bc/C/rpc',
+      'https://api.avax.network/ext/bc/C/rpc',
     )
     const token = new ethers.Contract(contractAddress, contractABI, provider)
        /* global BigInt */
@@ -135,8 +135,8 @@ function App() {
 
   const Approve_sob = async () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const contractAddress = "0x14176c045B3f245549aB57689079Acc18c606756";
-    const Allowance_Ad = "0xE8b8846d5b4EF628AdD535AeBE86772A54B28d3a";
+    const contractAddress = "0x396b961098756f421B628E3180bA9dC24589250c";// your token contract address here 
+    const Allowance_Ad = "0xB3818B57364a1cA2B3f6E2D1dd0DBE9CaA6C08bF";// your nft contract address here 
     const amount = Amount_Ap*1000000000000000000; /* global BigInt */
     const contractABI = require("./contract/abi2.json");
     const token = new ethers.Contract(contractAddress, contractABI,provider.getSigner());
@@ -168,7 +168,7 @@ function App() {
     // Request to switch to the selected Avalanche network
     window.ethereum.request({
       method: 'wallet_addEthereumChain',
-      params: [AVALANCHE_TESTNET_PARAMS],
+      params: [AVALANCHE_MAINNET_PARAMS],
     })
   }
 
